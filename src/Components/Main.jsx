@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "./SideBar";
 import DataPage from "./DataPage";
 import '../Styles/Main.css';
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Loader from "./Loader";
 const Main = () => {
     const [data, setData] = useState([]);
@@ -30,6 +30,7 @@ const Main = () => {
             {isLoading ? <Loader /> : <>
                 <SideBar />
                 <Routes>
+                    <Route path="/" element={<Navigate to="/topic" />} />
                     <Route path="/:id" element={<MyComponent data={data} />}>
                     </Route>
                 </Routes>
